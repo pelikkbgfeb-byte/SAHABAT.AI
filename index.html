@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Sahabat AI</title>
+<link rel="stylesheet" href="style.css?v=1.2">
+
+</head>
+<body>
+
+<div id="sidebar" class="sidebar">
+    <button class="close-sidebar-btn" onclick="toggleSidebar()">×</button>
+    
+    <div class="sidebar-header">
+        <button class="new-chat-box" onclick="newChat()">+ Percakapan Baru</button>
+    </div>
+
+    <div class="sidebar-section">
+        <p class="section-title">Shortcut Pintar</p>
+        <button class="shortcut-btn">📊 Strategi AdMob</button>
+        <button class="shortcut-btn">🎨 Desain Logo</button>
+    </div>
+
+    <div class="sidebar-section">
+        <p class="section-title">Riwayat</p>
+        <div id="history-list"></div>
+    </div>
+
+    <div class="sidebar-footer">
+        <p class="company-brand">PT ANUGRAH CORE DIGITAL</p>
+        <a href="https://anuxstore.com" target="_blank" class="store-link">Official Site</a>
+    </div>
+</div>
+
+<header class="header-container">
+    <button class="menu-btn" onclick="toggleSidebar()">≡</button>
+    <div class="branding-center">
+<img src="asset/1000575306.png" alt="Logo">
+
+        <h1>
+            <span class="sahabat-text">SAHABAT</span> 
+            <span class="ai-text">AI</span>
+        </h1>
+    </div>
+<button class="profile-btn" onclick="openProfile()"></button>
+
+</header>
+<div id="chat-container" class="chat-container"></div>
+    
+<div id="image-preview-container">
+    <img id="preview-img" src="" alt="preview">
+    <span onclick="removeImage()">×</span>
+</div>
+
+<div class="bottom-bar">
+<button class="action-btn" onclick="showMaintenanceAlert()">+</button>
+
+    <input type="file" id="fileInput" hidden accept="image/*">
+    <input type="text" id="user-input" placeholder="Tanya Sahabat AI...">
+    <button class="action-btn" onclick="startVoice()">🎙️</button>
+<button class="action-btn" onclick="sendMessage()">➤</button>
+</div>
+
+<div id="tutorial-modal" class="modal">
+    <div class="modal-content">
+        <h2 style="color: #00f2ff; margin-bottom: 15px;">Panduan Sultan! 🚀</h2>
+        
+        <div style="text-align: left; color: #fff; line-height: 1.6; font-size: 15px;">
+            <p>Biar AI-nya bisa mikir, lo wajib pasang API Key:</p>
+            <ul style="margin-left: 20px; margin-top: 10px; margin-bottom: 20px;">
+                <li>Cari tombol <b>Profil</b> (top-right).</li>
+                <li>Pilih <b>Pengaturan API</b>.</li>
+                <li>Masukin API Key lo & klik <b>Simpan</b>.</li>
+            </ul>
+        </div>
+
+        <button class="save-btn" onclick="closeTutorial()">Paham, gas ke profil! 🔥</button>
+    </div>
+</div>
+
+<div id="profile-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">×</span>
+        <h2>Pengaturan API</h2>
+        <p class="subtitle">Kunci API Gemini Anda</p>
+        <input type="text" id="api-key-input" placeholder="API KEY SUDAH DI SALIN ?...">
+        
+        <button class="save-btn" onclick="saveApiKey()">Simpan Kunci API</button>
+        
+        <button class="save-btn" onclick="clearApiKey()" style="background-color: #ff4444; margin-top: 10px;">Hapus API Key</button>
+        
+        <a href="https://aistudio.google.com/api-keys?project=gen-lang-client-0468442929/" target="_blank" class="guide-link">Butuh Kunci API? Klik di Sini</a>
+    </div>
+</div>
+
+
+<div id="custom-alert" class="alert-box">
+    <p id="alert-message"></p>
+    <button onclick="closeAlert()">OK</button>
+</div>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+
+<script>
+  // Konfigurasi Database lo
+  const firebaseConfig = {
+    databaseURL: "https://anux-admin-default-rtdb.asia-southeast1.firebasedatabase.app/"
+  };
+  firebase.initializeApp(firebaseConfig);
+window.database = firebase.database();
+
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
